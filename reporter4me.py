@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
 import click
-import requests
 import smtplib
 from email.mime.text import MIMEText
 from time import sleep
 from tqdm import tqdm
-import getpass
 import json
+import openai
 
 
 def load_configuration():
@@ -23,8 +22,8 @@ def prompt_for_user_info():
 
 
 def generate_report(poc):
-    # Generate report based on the PoC
-    report = f"Vulnerability Details:\n\n{poc}\n\nRecommendations:\n\n- Implement security patch\n- Enforce strict input validation"
+    # Generate a concise and objective report based on the PoC
+    report = f"Vulnerability Details: {poc}\n\nRecommendations: Implement security patch and enforce strict input validation"
 
     return report
 
@@ -49,19 +48,24 @@ def send_email(report, email, email_password):
 
 
 def generate_report_with_ai(poc, api_key):
-    # Make a request to ChatGPT API to generate report content
-    headers = {
-        'Content-Type': 'application/json',
-        'Authorization': f'Bearer {api_key}'
-    }
-    data = {
-        'messages': [{'role': 'system', 'content': 'You are a cybersecurity expert.'},
-                     {'role': 'user', 'content': poc}]
-    }
-    response = requests.post('https://api.openai.com/v1/chat/completions', headers=headers, json=data)
+    openai.api_key = api_key
 
-    # Extract the generated report from the API response
-    report = response.json()['choices'][0]['message']['content']
+    # Generate report using ChatGPT
+    response = openai.Completion.create(
+        engine='davinci',
+        prompt=poc,
+        max_tokens=100,
+        n=1,
+        stop=None,
+        temperature=0.7,
+        temperature_decay_rate=0.9,
+        temperature_floor=0.5,
+        temperature_schedule=[0.5] * 20 + [0.2] * 20 + [0.1],
+        top_p=1.0,
+        frequency_penalty=0.0,
+        presence_penalty=0.0
+    )
+    report = response.choices[0].text.strip()
 
     return report
 
@@ -85,7 +89,7 @@ def main():
     report = generate_report_with_ai(poc, api_key)
 
     # Show the generated report to the user
-    click.echo("Generated Report:\n")
+    click.echo("\nGenerated Report:\n")
     click.echo(report)
     click.echo()
 
