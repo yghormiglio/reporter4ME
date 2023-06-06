@@ -8,6 +8,15 @@ from tqdm import tqdm
 import json
 import openai
 
+logo = """
+                               __            __ __  __  _________
+   ________  ____  ____  _____/ /____  _____/ // / /  |/  / ____/
+  / ___/ _ \/ __ \/ __ \/ ___/ __/ _ \/ ___/ // /_/ /|_/ / __/   
+ / /  /  __/ /_/ / /_/ / /  / /_/  __/ /  /__  __/ /  / / /___   
+/_/   \___/ .___/\____/_/   \__/\___/_/     /_/ /_/  /_/_____/   
+         /_/                                                                                                  
+"""
+print(logo)
 
 def load_configuration():
     with open('config.json') as config_file:
