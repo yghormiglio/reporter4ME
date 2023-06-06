@@ -7,24 +7,13 @@ from email.mime.text import MIMEText
 from time import sleep
 from tqdm import tqdm
 import getpass
+import json
 
 
-def prompt_for_api_key():
-    while True:
-        api_key = getpass.getpass("Enter your ChatGPT API key: ")
-        if not api_key:
-            click.echo("API key cannot be empty. Please try again.")
-        else:
-            return api_key
-
-
-def prompt_for_email():
-    while True:
-        email = click.prompt("Enter the recipient's email address")
-        if '@' not in email:
-            click.echo("Invalid email address. Please try again.")
-        else:
-            return email
+def load_configuration():
+    with open('config.json') as config_file:
+        config = json.load(config_file)
+    return config
 
 
 def prompt_for_user_info():
@@ -79,9 +68,10 @@ def generate_report_with_ai(poc, api_key):
 
 @click.command()
 def main():
+    config = load_configuration()
     user_name, user_role = prompt_for_user_info()
-    api_key = prompt_for_api_key()
-    email = prompt_for_email()
+    email = config['email']
+    api_key = config['api_key']
 
     poc = click.prompt("Enter the Proof of Concept (PoC)")
 
