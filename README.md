@@ -2,24 +2,24 @@
 
 Reporter4ME is a bug bounty reporting tool that helps cybersecurity analysts generate and send reports for bug bounty programs. It integrates with the ChatGPT API to generate detailed vulnerability reports based on provided proof-of-concepts (PoCs). The generated reports can then be sent via email to the desired recipient.
 
-## Features
+# Features
 
 - Easy-to-use command-line interface
 - Integration with OpenAI ChatGPT API for generating detailed reports
 - Customizable email notification with report delivery
 - Progress bar simulation for a realistic loading experience
 
-## Installation
+# Installation
 
 To install Reporter4ME, follow these steps:
 
 1. Ensure you have Python 3.x installed on your system.
-2. Clone this repository: `git clone https://github.com/your-username/reporter4me.git`
+2. Clone this repository: `git clone https://github.com/yghormiglio/reporter4me.git`
 3. Navigate to the project directory: `cd reporter4me`
 4. Install the dependencies: `pip install -r requirements.txt`
 5. Make the script executable: `chmod +x reporter4me.sh`
 
-## Usage
+# Usage
 
 To run Reporter4ME, use the following command:
 
@@ -44,7 +44,7 @@ Reporter4ME is a command-line tool for generating and sending bug bounty reports
 - Customizable email notification with report delivery
 - Progress bar simulation for a realistic loading experience
 
-## Installation
+# Installation
 
 To install Reporter4ME, follow these steps:
 
@@ -54,7 +54,7 @@ To install Reporter4ME, follow these steps:
 4. Install the dependencies: `pip install -r requirements.txt`
 5. Make the script executable: `chmod +x reporter4me.sh`
 
-## Usage
+# Usage
 
 To run Reporter4ME, use the following command:
 
@@ -62,16 +62,16 @@ To run Reporter4ME, use the following command:
 ./reporter4me.sh run
 This will start the tool and guide you through the process of generating and sending bug bounty reports.
 
-Configuration
+# Configuration
 Before running the tool, make sure to configure the necessary settings in the config.json file. Open the file and provide your ChatGPT API key, email details, and other required information.
 
-License
+# License
 This project is licensed under the MIT License.
 
-Contributing
+# Contributing
 Contributions to Reporter4ME are welcome! If you find any bugs, have suggestions, or would like to contribute new features, please open an issue or submit a pull request.
 
-Bug Reports and Feedback
+# Bug Reports and Feedback
 If you encounter any issues or have feedback, please open an issue on GitHub.
 
 
