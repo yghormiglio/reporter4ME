@@ -31,13 +31,14 @@ Certainly! Here's an example README.md file for your GitHub repository:
 
 markdown
 Copy code
-# Reporter4ME
+
+# Usage
 
 ![Reporter4ME Logo](logo.png)
 
 Reporter4ME is a command-line tool for generating and sending bug bounty reports. It utilizes the OpenAI ChatGPT API to generate detailed reports based on provided proof-of-concept (PoC) examples.
 
-## Features
+
 
 - Easy-to-use command-line interface
 - Integration with OpenAI ChatGPT API for generating detailed reports
